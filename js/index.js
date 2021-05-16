@@ -185,3 +185,17 @@ for(let i = 0; i < 100; i++) {
     users.push(user);
 };
 
+// console.table(users);
+
+// Take only women
+const womanUsers = users.filter(isWoman);
+function isWoman(user) {
+    return !user.isMale;
+};
+// console.table(womanUsers);
+
+const unsubscribedAdultManUsers = users.filter(isUnsubscribed)
+function isUnsubscribed(user) {
+    return user.isMale && user.age >= 18 && !user.isSubscribed;
+};
+console.table(unsubscribedAdultManUsers);
