@@ -114,8 +114,74 @@ console.log('train.name :>> ', train.name);
 console.log('train.showSpeed(99) :>> ', train.showSpeed(99));
 
 
+// callback
+function sayHello(callback, phrase) {
+    if (typeof callback === 'function') {
+        callback(phrase);
+    };
+};
+
+sayHello(console.log, 'Hello, Jack!');
+// sayHello(alert, 'Hello, Jack!');
+sayHello("alert", 'Hello, Jack!');
+
+
 // arrays 
+const arr4 = [1, 2, 3, 4, 5];
+
+arr4.forEach(showItem);
+
+function showItem(currentItem, index, array){
+    console.log('currentItem :>> ', `${currentItem} - index ${index} ${array}`);
+};
+
+const arr5 = [{}, {}, {}, {}];
+arr5.forEach(f);
+
+function f(currentItem, index, array) {
+    currentItem.property = 'qwerty';
+    currentItem.property1 = 'qwerty1';
+};
 
 
+const arr6 = [1, 2, 11, 8, 7];
+console.log('arr6.some(isEven) :>> ', arr6.some(isEven));
+console.log('arr6.every(isEven) :>> ', arr6.every(isEven));
 
+function isEven(item, index, arr) {
+    console.log('index :>> ', index);
+    return item % 2 === 0;
+};
+function isOdd(item, index, arr) {
+    console.log('index :>> ', index);
+    return item % 2 != 0;
+};
+const arrEvenItem = arr6.filter(isEven);
+const arrOddItem = arr6.filter(isOdd);
+console.log('arrEvenItem :>> ', arrEvenItem);
+console.log('arrOddItem :>> ', arrOddItem);
+
+
+function User(name, surname, age, isMale, email, isSubscribed) {
+    this.firstName = name;
+    this.lastName = surname;
+    this.age = age;
+    this.isMale = isMale;
+    this.email = email;
+    this.is = isSubscribed;
+}
+
+const users = [];
+
+for(let i = 0; i < 100; i++) {
+    const user = new User(
+        `Username ${i}`,
+        `Usersurname ${i}`,
+        Math.floor(Math.random() * 90),
+        Math.random() > 0.5,
+        `useremail${i}@gmail.com`,
+        Math.random() > 0.5
+    );
+    users.push(user);
+};
 
