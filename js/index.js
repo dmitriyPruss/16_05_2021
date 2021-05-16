@@ -180,7 +180,7 @@ for(let i = 0; i < 100; i++) {
         Math.floor(Math.random() * 90),
         Math.random() > 0.5,
         `useremail${i}@gmail.com`,
-        Math.random() > 0.5
+        Math.random() > 0.5,
     );
     users.push(user);
 };
@@ -196,6 +196,20 @@ function isWoman(user) {
 
 const unsubscribedAdultManUsers = users.filter(isUnsubscribed)
 function isUnsubscribed(user) {
-    return user.isMale && user.age >= 18 && !user.isSubscribed;
+    return user.isMale && user.age >= 18 && !user.is;
 };
 console.table(unsubscribedAdultManUsers);
+
+// map
+
+const userEmails = users.map(getEmail);
+
+function getEmail(user) {
+    return user.email;
+};
+console.table(userEmails);
+
+// only women emails
+const womanEmails = users.filter(isWoman).map(getEmail);
+
+console.table(womanEmails);
